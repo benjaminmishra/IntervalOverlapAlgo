@@ -32,17 +32,14 @@ namespace IntervalOverlapAlgo
             Timing input1 = new Timing(21000, 40230);
             Timing input2 = new Timing(50000, 50530);
 
-
             //--- First add input1 to the array
             arry.Add(input1);
             arry.Sort(new Comparision());
             //--- check if adding the new record resulted in overlap
-            if (PorcessList.CheckOverLap(arry))
-            {
+            if (PorcessList.CheckOverLap(arry)){
                 Console.WriteLine("overlap found; not safe to insert");
             }
-            else
-            {
+            else{
                 Console.WriteLine("no overlap found; safe to insert");
             }
             arry.Remove(input1);
@@ -50,17 +47,13 @@ namespace IntervalOverlapAlgo
 
             arry.Add(input2);
             arry.Sort(new Comparision());
-            if (PorcessList.CheckOverLap(arry))
-            {
+            if (PorcessList.CheckOverLap(arry)){
                 Console.WriteLine("overlap found; not safe to insert");
             }
-            else
-            {
+            else{
                 Console.WriteLine("no overlap found; safe to insert");
             }
             arry.Remove(input2);
-
-
             Console.ReadLine();
         }
     }
@@ -83,17 +76,14 @@ namespace IntervalOverlapAlgo
         {
             for (int i = 1; i < array.Count; i++)
             {
-                if (array[i - 1].EndTime > array[i].StartTime)
-                {
+                if (array[i - 1].EndTime > array[i].StartTime){
                     _overlap = true;
                     break;
                 }
-                else
-                {
+                else{
                     _overlap = false;
                 }
             }
-
             return _overlap;
         }
     }
@@ -102,15 +92,12 @@ namespace IntervalOverlapAlgo
     {
         public int Compare(Timing a, Timing b)
         {
-            if (a.StartTime < b.StartTime)
-                return -1;
-            else if (a.StartTime == b.StartTime)
+            if (a.StartTime < b.StartTime || a.StartTime == b.StartTime)
                 return -1;
             else
                 return 1;
         }
     }
-
 }
 
 
